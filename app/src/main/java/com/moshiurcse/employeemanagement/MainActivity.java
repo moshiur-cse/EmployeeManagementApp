@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.moshiurcse.employeemanagement.models.BaseSalarriedEmployee;
+import com.moshiurcse.employeemanagement.models.Employee;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,5 +14,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BaseSalarriedEmployee baseSalarriedEmployee= new BaseSalarriedEmployee();
+
+        Employee employee=new Employee();
+        
     }
 }
