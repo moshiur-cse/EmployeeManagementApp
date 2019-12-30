@@ -130,7 +130,8 @@
             android:id="@+id/hourlyRateInput"
             android:hint="Enter Hourly Rate"
             android:inputType="numberDecimal"
-            android:layout_margin="7dp"/>
+            android:layout_margin="7dp"
+            android:visibility="gone"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -138,7 +139,8 @@
             android:id="@+id/totalHourInput"
             android:hint="Enter Total Hour"
             android:inputType="numberDecimal"
-            android:layout_margin="7dp"/>
+            android:layout_margin="7dp"
+            android:visibility="gone"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -146,14 +148,16 @@
             android:id="@+id/commisionRateInput"
             android:hint="Enter Commision Rate"
             android:inputType="numberDecimal"
-            android:layout_margin="7dp"/>
+            android:layout_margin="7dp"
+            android:visibility="gone"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/grossSaleInput"
             android:hint="Enter Gross Sale"
             android:inputType="numberDecimal"
-            android:layout_margin="7dp"/>
+            android:layout_margin="7dp"
+            android:visibility="gone"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
