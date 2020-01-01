@@ -60,6 +60,15 @@ public class Employee {
         this.emp_gender = emp_gender;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "emp_name='" + emp_name + '\'' +
+                ", dob='" + dob + '\'' +
+                ", emp_email='" + emp_email + '\'' +
+                ", emp_phone='" + emp_phone + '\'' +
+                ", emp_designation='" + emp_designation + '\'' +
+                ", emp_gender='" + emp_gender + '\'' +
+                '}';
+    }
 }
