@@ -4,8 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.transition.Fade;
+import android.transition.Transition;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -76,28 +83,60 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private void activateDeactivateView(int checkedId) {
         switch (checkedId){
             case R.id.rbBaseSalarriedEmployee:
-                baseSalaryET.setVisibility(View.VISIBLE);
-                totalHourET.setVisibility(View.GONE);
-                hourlyRateET.setVisibility(View.GONE);
-                commitionRateET.setVisibility(View.GONE);
-                grossSaleET.setVisibility(View.GONE);
-                //view.animate().alpha(0.0f).setDuration(2000);
+
+
+                //baseSalaryET.setVisibility(View.VISIBLE);
+                slideUp(baseSalaryET);
+
+
+                //totalHourET.animate().setDuration(5000).start();
+                //totalHourET.setVisibility(View.GONE);
+                slideDown(totalHourET);
+
+
+
+                //hourlyRateET.animate().setDuration(5000).start();
+                //hourlyRateET.setVisibility(View.GONE);
+                slideDown(hourlyRateET);
+
+                //commitionRateET.setVisibility(View.GONE);
+                slideDown(commitionRateET);
+                //grossSaleET.setVisibility(View.GONE);
+                slideDown(grossSaleET);
+
                 break;
 
             case R.id.rbHourlySalarriedEmployee:
-                baseSalaryET.setVisibility(View.GONE);
-                totalHourET.setVisibility(View.VISIBLE);
-                hourlyRateET.setVisibility(View.VISIBLE);
-                commitionRateET.setVisibility(View.GONE);
-                grossSaleET.setVisibility(View.GONE);
+                //baseSalaryET.setVisibility(View.GONE);
+                slideDown(baseSalaryET);
+
+
+                //totalHourET.setVisibility(View.VISIBLE);
+                slideUp(totalHourET);
+                //hourlyRateET.setVisibility(View.VISIBLE);
+                slideUp(hourlyRateET);
+
+                //commitionRateET.setVisibility(View.GONE);
+                slideDown(commitionRateET);
+
+                //grossSaleET.setVisibility(View.GONE);
+                slideDown(grossSaleET);
+
                 break;
             case R.id.rbBaseAndCommisionSalarriedEmployee:
 
-                baseSalaryET.setVisibility(View.GONE);
-                totalHourET.setVisibility(View.GONE);
-                hourlyRateET.setVisibility(View.GONE);
-                commitionRateET.setVisibility(View.VISIBLE);
-                grossSaleET.setVisibility(View.VISIBLE);
+                //baseSalaryET.setVisibility(View.GONE);
+                slideDown(baseSalaryET);
+
+                //totalHourET.setVisibility(View.GONE);
+                slideDown(totalHourET);
+
+                //hourlyRateET.setVisibility(View.GONE);
+                slideDown(hourlyRateET);
+                //commitionRateET.setVisibility(View.VISIBLE);
+                slideUp(commitionRateET);
+                //grossSaleET.setVisibility(View.VISIBLE);
+                slideUp(grossSaleET);
 
                 break;
             default:
@@ -122,8 +161,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 bse.setEmp_gender(gender);
                 bse.setEmp_designation(emp_type);
                 bse.setBase_salary(Double.parseDouble(baseSalary));
-
                 Log.e("Employee","RegisterNewEmployee"+bse);
+
 
                 break;
             case "Hourly Salary Employee":
@@ -189,4 +228,45 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         dob =sdf.format(calendar.getTime());
         dobET.setText(dob);
     }
+
+    public void slideUp(View view){
+
+        TranslateAnimation animate = new TranslateAnimation(
+                0,                 // fromXDelta
+                0,                 // toXDelta
+                view.getHeight(),          // fromYDelta
+                0);                // toYDelta
+        animate.setDuration(500);
+        animate.setFillAfter(true);
+        view.setVisibility(View.VISIBLE);
+        view.startAnimation(animate);
+
+
+    }
+
+    // slide the view from its current position to below itself
+    public void slideDown(View view){
+
+        TranslateAnimation animate = new TranslateAnimation(
+                0,                 // fromXDelta
+               0,// toXDelta
+                0,                 // fromYDelta
+                view.getWidth()); // toYDelta
+        animate.setDuration(500);
+
+        animate.setFillAfter(true);
+        view.setVisibility(View.GONE);
+        view.startAnimation(animate);
+        //view.setVisibility(View.GONE);
+
+    }
+
+   /* private void toggle(View view) {
+        Transition transition = new Fade();
+        transition.setDuration(600);
+        transition.addTarget(R.id.image);
+
+        TransitionManager.beginDelayedTransition(view.);
+        view.setVisibility(show ? View.VISIBLE : View.GONE);
+    }*/
 }
