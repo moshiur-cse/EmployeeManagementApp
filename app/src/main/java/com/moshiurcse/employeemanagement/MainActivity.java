@@ -159,9 +159,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 bpse.setBaseSalary1(Double.parseDouble(baseSalary1));
                 bpse.setCommision_rate(Double.parseDouble(commisionRate));
                 bpse.setGross_total(Double.parseDouble(grossSale));
-
                 break;
-
 
         }
 
