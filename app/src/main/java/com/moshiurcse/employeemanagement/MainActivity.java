@@ -86,57 +86,57 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
 
                 //baseSalaryET.setVisibility(View.VISIBLE);
-                slideUp(baseSalaryET);
+                slidesShow(baseSalaryET);
 
 
                 //totalHourET.animate().setDuration(5000).start();
                 //totalHourET.setVisibility(View.GONE);
-                slideDown(totalHourET);
+                slideHide(totalHourET);
 
 
 
                 //hourlyRateET.animate().setDuration(5000).start();
                 //hourlyRateET.setVisibility(View.GONE);
-                slideDown(hourlyRateET);
+                slideHide(hourlyRateET);
 
                 //commitionRateET.setVisibility(View.GONE);
-                slideDown(commitionRateET);
+                slideHide(commitionRateET);
                 //grossSaleET.setVisibility(View.GONE);
-                slideDown(grossSaleET);
+                slideHide(grossSaleET);
 
                 break;
 
             case R.id.rbHourlySalarriedEmployee:
                 //baseSalaryET.setVisibility(View.GONE);
-                slideDown(baseSalaryET);
+                slideHide(baseSalaryET);
 
 
                 //totalHourET.setVisibility(View.VISIBLE);
-                slideUp(totalHourET);
+                slidesShow(totalHourET);
                 //hourlyRateET.setVisibility(View.VISIBLE);
-                slideUp(hourlyRateET);
+                slidesShow(hourlyRateET);
 
                 //commitionRateET.setVisibility(View.GONE);
-                slideDown(commitionRateET);
+                slideHide(commitionRateET);
 
                 //grossSaleET.setVisibility(View.GONE);
-                slideDown(grossSaleET);
+                slideHide(grossSaleET);
 
                 break;
             case R.id.rbBaseAndCommisionSalarriedEmployee:
 
                 //baseSalaryET.setVisibility(View.GONE);
-                slideDown(baseSalaryET);
+                slideHide(baseSalaryET);
 
                 //totalHourET.setVisibility(View.GONE);
-                slideDown(totalHourET);
+                slideHide(totalHourET);
 
                 //hourlyRateET.setVisibility(View.GONE);
-                slideDown(hourlyRateET);
+                slideHide(hourlyRateET);
                 //commitionRateET.setVisibility(View.VISIBLE);
-                slideUp(commitionRateET);
+                slidesShow(commitionRateET);
                 //grossSaleET.setVisibility(View.VISIBLE);
-                slideUp(grossSaleET);
+                slidesShow(grossSaleET);
 
                 break;
             default:
@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         dobET.setText(dob);
     }
 
-    public void slideUp(View view){
+    public void slidesShow(View view){
 
         TranslateAnimation animate = new TranslateAnimation(
                 0,                 // fromXDelta
@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     // slide the view from its current position to below itself
-    public void slideDown(View view){
+    public void slideHide(View view){
 
         TranslateAnimation animate = new TranslateAnimation(
                 0,                 // fromXDelta
@@ -253,20 +253,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 0,                 // fromYDelta
                 view.getWidth()); // toYDelta
         animate.setDuration(500);
-
         animate.setFillAfter(true);
         view.setVisibility(View.GONE);
         view.startAnimation(animate);
-        //view.setVisibility(View.GONE);
 
     }
-
-   /* private void toggle(View view) {
-        Transition transition = new Fade();
-        transition.setDuration(600);
-        transition.addTarget(R.id.image);
-
-        TransitionManager.beginDelayedTransition(view.);
-        view.setVisibility(show ? View.VISIBLE : View.GONE);
-    }*/
 }
