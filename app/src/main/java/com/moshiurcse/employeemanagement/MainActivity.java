@@ -129,16 +129,12 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         switch (checkedId){
             case R.id.rbBaseSalarriedEmployee:
 
-
                 //baseSalaryET.setVisibility(View.VISIBLE);
                 slidesShow(baseSalaryET);
-
 
                 //totalHourET.animate().setDuration(5000).start();
                 //totalHourET.setVisibility(View.GONE);
                 slideHide(totalHourET);
-
-
 
                 //hourlyRateET.animate().setDuration(5000).start();
                 //hourlyRateET.setVisibility(View.GONE);
