@@ -9,11 +9,12 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.moshiurcse.employeemanagement.prefs.AuthPreference;
 import com.moshiurcse.employeemanagement.utils.ConstantUtils;
 
 public class LoginActivity extends AppCompatActivity {
-
-    TextInputEditText mailAdressET,passwordET;
+    private AuthPreference authPreference;
+    private TextInputEditText mailAdressET,passwordET;
     Button loginAdminBtn;
 
     @Override
@@ -23,6 +24,12 @@ public class LoginActivity extends AppCompatActivity {
         mailAdressET=findViewById(R.id.mailAdressET);
         passwordET=findViewById(R.id.passwordET);
 
+        authPreference =new AuthPreference(this);
+
+        if(authPreference.isAdminLoggedIn()){
+            goToMainActiviy();
+        }
+
     }
 
     public void loginAdminBtn(View view) {
@@ -31,14 +38,20 @@ public class LoginActivity extends AppCompatActivity {
         String password=passwordET.getText().toString();
 
         if (mailAdress.equals(ConstantUtils.Admin.EMAIL_ADRESS) && password.equals(ConstantUtils.Admin.PASSWORD)){
-            finish();
-            Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-            startActivity(intent);
+            authPreference.setLoginStatus(true);
+            goToMainActiviy();
+
 
         }else{
             Toast.makeText(this,"Log in fails",Toast.LENGTH_SHORT).show();
         }
 
+
+    }
+    private void goToMainActiviy(){
+        finish();
+        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+        startActivity(intent);
 
     }
 }
