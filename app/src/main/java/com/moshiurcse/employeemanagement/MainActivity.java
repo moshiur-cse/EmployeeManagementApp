@@ -1,13 +1,19 @@
 package com.moshiurcse.employeemanagement;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.transition.Fade;
 import android.transition.Transition;
 import android.transition.TransitionManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -17,12 +23,14 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.moshiurcse.employeemanagement.models.BasePlusCommisionEmployee;
 import com.moshiurcse.employeemanagement.models.BaseSalarriedEmployee;
 import com.moshiurcse.employeemanagement.models.Employee;
 import com.moshiurcse.employeemanagement.models.HourlySalarriedEmployee;
+import com.moshiurcse.employeemanagement.prefs.AuthPreference;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -34,13 +42,50 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     private RadioGroup genderRG,typeRG;
 
+    private AuthPreference authPreference;
+
     private String gender="Male";
     private String emp_type="Base Salaried Employee";
     private String dob="";
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater=getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu,menu);
+        //menuInflater.inflate(R.menu.main_menu,menu);
+        //menuInflater.inflate(R.menu.);
+         //menuInflater.inflate(R.menu,menu);
+        //menuInflater.inflate(R.menu.);
+        //menuInflater.inflate(R.menu.);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.itemSetting:
+                Toast.makeText(this,"Comming Soon",Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.itemLogOut:
+                authPreference.setLoginStatus(false);
+                finish();
+                Intent intent=new Intent(this,LoginActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        authPreference =new AuthPreference(this);
 
         nameET=findViewById(R.id.empNameInput);
         dobET=findViewById(R.id.empDobInput);
@@ -84,16 +129,12 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         switch (checkedId){
             case R.id.rbBaseSalarriedEmployee:
 
-
                 //baseSalaryET.setVisibility(View.VISIBLE);
                 slidesShow(baseSalaryET);
-
 
                 //totalHourET.animate().setDuration(5000).start();
                 //totalHourET.setVisibility(View.GONE);
                 slideHide(totalHourET);
-
-
 
                 //hourlyRateET.animate().setDuration(5000).start();
                 //hourlyRateET.setVisibility(View.GONE);
