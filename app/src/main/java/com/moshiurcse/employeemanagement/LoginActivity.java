@@ -28,4 +28,5 @@ public class LoginActivity extends AppCompatActivity {
         String email=emailET.getText().toString();
         String pass=passwordET.getText().toString();
     }
+
 }

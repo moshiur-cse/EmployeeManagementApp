@@ -238,8 +238,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         animate.setFillAfter(true);
         view.setVisibility(View.VISIBLE);
         view.startAnimation(animate);
-
-
     }
 
     // slide the view from its current position to below itself
