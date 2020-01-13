@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
             }
         });
+
         typeRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -150,9 +151,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 //baseSalaryET.setVisibility(View.GONE);
                 slideHide(baseSalaryET);
 
-
                 //totalHourET.setVisibility(View.VISIBLE);
                 slidesShow(totalHourET);
+
                 //hourlyRateET.setVisibility(View.VISIBLE);
                 slidesShow(hourlyRateET);
 
@@ -165,16 +166,18 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 break;
             case R.id.rbBaseAndCommisionSalarriedEmployee:
 
-                //baseSalaryET.setVisibility(View.GONE);
-                slideHide(baseSalaryET);
-
                 //totalHourET.setVisibility(View.GONE);
                 slideHide(totalHourET);
 
                 //hourlyRateET.setVisibility(View.GONE);
                 slideHide(hourlyRateET);
+
+                //baseSalaryET.setVisibility(View.GONE);
+                slidesShow(baseSalaryET);
+
                 //commitionRateET.setVisibility(View.VISIBLE);
                 slidesShow(commitionRateET);
+
                 //grossSaleET.setVisibility(View.VISIBLE);
                 slidesShow(grossSaleET);
 
@@ -192,16 +195,21 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         switch (emp_type){
             case "Base Salaried Employee":
                 String baseSalary=baseSalaryET.getText().toString();
-                BaseSalarriedEmployee bse =new BaseSalarriedEmployee();
+                BaseSalarriedEmployee bse =new BaseSalarriedEmployee(name,dob,mobile,email,gender,emp_type,Double.parseDouble(baseSalary));
 
-                bse.setEmp_name(name);
+                /*bse.setEmp_name(name);
                 bse.setDob(dob);
                 bse.setEmp_phone(mobile);
                 bse.setEmp_email(email);
                 bse.setEmp_gender(gender);
                 bse.setEmp_designation(emp_type);
-                bse.setBase_salary(Double.parseDouble(baseSalary));
+                bse.setBase_salary(Double.parseDouble(baseSalary));*/
+
                 Log.e("Employee","RegisterNewEmployee"+bse);
+                Log.e("Employee","Total Salary="+bse.getTotalSalary());
+                Toast.makeText(this,"Total Salary="+bse.getTotalSalary(),Toast.LENGTH_LONG).show();
+
+
 
 
                 break;
@@ -210,16 +218,20 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 String hourlyRate=hourlyRateET.getText().toString();
 
 
-                HourlySalarriedEmployee hse =new HourlySalarriedEmployee();
+                HourlySalarriedEmployee hse =new HourlySalarriedEmployee(name,dob,mobile,email,gender,emp_type,Double.parseDouble(hourlyRate),Double.parseDouble(totalHour));
 
-                hse.setEmp_name(name);
+               /* hse.setEmp_name(name);
                 hse.setDob(dob);
                 hse.setEmp_phone(mobile);
                 hse.setEmp_email(email);
                 hse.setEmp_gender(gender);
                 hse.setEmp_designation(emp_type);
                 hse.setHourly_rate(Double.parseDouble(hourlyRate));
-                hse.setTotal_hour(Double.parseDouble(totalHour));
+                hse.setTotal_hour(Double.parseDouble(totalHour));*/
+
+                Log.e("Employee","RegisterNewEmployee"+hse);
+                Log.e("Employee","Total Salary="+hse.getTotalSalary());
+                Toast.makeText(this,"Total Salary="+hse.getTotalSalary(),Toast.LENGTH_LONG).show();
 
                 break;
             case "Base and Commision Salary Employee":
@@ -227,17 +239,23 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 String commisionRate=commitionRateET.getText().toString();
                 String grossSale=grossSaleET.getText().toString();
 
-                BasePlusCommisionEmployee bpse =new BasePlusCommisionEmployee();
+                BasePlusCommisionEmployee bpse =new BasePlusCommisionEmployee(name,dob,mobile,email,gender,emp_type,Double.parseDouble(baseSalary1),Double.parseDouble(commisionRate),Double.parseDouble(grossSale));
 
-                bpse.setEmp_name(name);
+                /*bpse.setEmp_name(name);
                 bpse.setEmp_phone(mobile);
                 bpse.setEmp_email(email);
                 bpse.setDob(dob);
                 bpse.setEmp_gender(gender);
                 bpse.setEmp_designation(emp_type);
+
                 bpse.setBaseSalary1(Double.parseDouble(baseSalary1));
                 bpse.setCommision_rate(Double.parseDouble(commisionRate));
-                bpse.setGross_total(Double.parseDouble(grossSale));
+                bpse.setGross_total(Double.parseDouble(grossSale));*/
+
+                Log.e("Employee","RegisterNewEmployee"+bpse);
+                Log.e("Employee","Total Salary="+bpse.getTotalSalary());
+                Toast.makeText(this,"Total Salary="+bpse.getTotalSalary(),Toast.LENGTH_LONG).show();
+
                 break;
 
         }

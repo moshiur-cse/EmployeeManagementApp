@@ -1,6 +1,6 @@
 package com.moshiurcse.employeemanagement.models;
 
-public class Employee {
+public abstract class  Employee {
     private String emp_name;
     private String dob;
     private String emp_email;
@@ -8,8 +8,15 @@ public class Employee {
     private String emp_designation;
     private String emp_gender;
 
-    public double getTotalSalary(){
-        return 0.0;
+    public abstract double getTotalSalary();
+
+    public Employee(String emp_name, String dob, String emp_email, String emp_phone, String emp_designation, String emp_gender) {
+        this.emp_name = emp_name;
+        this.dob = dob;
+        this.emp_email = emp_email;
+        this.emp_phone = emp_phone;
+        this.emp_designation = emp_designation;
+        this.emp_gender = emp_gender;
     }
 
     public String getEmp_name() {

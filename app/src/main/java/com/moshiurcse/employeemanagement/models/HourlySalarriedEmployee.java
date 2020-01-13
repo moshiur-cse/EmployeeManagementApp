@@ -4,6 +4,19 @@ public class HourlySalarriedEmployee extends Employee {
     private double hourly_rate;
     private double total_hour;
 
+
+    public HourlySalarriedEmployee(String emp_name, String dob, String emp_email, String emp_phone, String emp_designation, String emp_gender, double hourly_rate, double total_hour) {
+        super(emp_name, dob, emp_email, emp_phone, emp_designation, emp_gender);
+        this.hourly_rate = hourly_rate;
+        this.total_hour = total_hour;
+    }
+    @Override
+    public double getTotalSalary(){
+        return hourly_rate*total_hour;
+
+    }
+
+
     public double getHourly_rate() {
         return hourly_rate;
     }
@@ -19,6 +32,8 @@ public class HourlySalarriedEmployee extends Employee {
     public void setTotal_hour(double total_hour) {
         this.total_hour = total_hour;
     }
+
+
 
     @Override
     public String toString() {
