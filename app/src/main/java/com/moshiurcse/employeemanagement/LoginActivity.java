@@ -47,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
             authPreference.setLoginStatus(true);
             goToMainActiviy();
 
-
         }else{
             Toast.makeText(this,"Log in fails",Toast.LENGTH_SHORT).show();
         }

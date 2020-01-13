@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
          //menuInflater.inflate(R.menu,menu);
         //menuInflater.inflate(R.menu.);
         //menuInflater.inflate(R.menu.);
-
         return super.onCreateOptionsMenu(menu);
     }
 
