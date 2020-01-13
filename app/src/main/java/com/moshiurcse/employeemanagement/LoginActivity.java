@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -33,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         authPreference =new AuthPreference(this);
 
         if(authPreference.isAdminLoggedIn()){
-            goToMainActiviy();
+            goToDashboardActivity();
         }
 
     }
@@ -45,17 +43,16 @@ public class LoginActivity extends AppCompatActivity {
 
         if (mailAdress.equals(ConstantUtils.Admin.EMAIL_ADRESS) && password.equals(ConstantUtils.Admin.PASSWORD)){
             authPreference.setLoginStatus(true);
-            goToMainActiviy();
+            goToDashboardActivity();
 
         }else{
             Toast.makeText(this,"Log in fails",Toast.LENGTH_SHORT).show();
         }
 
-
     }
-    private void goToMainActiviy(){
+    private void goToDashboardActivity(){
         finish();
-        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+        Intent intent=new Intent(LoginActivity.this,AdminDashboardActivity.class);
         startActivity(intent);
 
     }

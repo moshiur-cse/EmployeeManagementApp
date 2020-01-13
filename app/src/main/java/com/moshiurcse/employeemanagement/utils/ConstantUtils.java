@@ -10,4 +10,10 @@ public class ConstantUtils {
         public static final String STATUS_KEY="status";
 
     }
+    public static class EmployeeType{
+        public static final String BASE_SALARIED="Base Salaried Employee";
+        public static final String HOURLY_SALARIED="Hourly Salary Employee";
+        public static final String BASE_COMMISION_SALARIED="Base and Commision Salary Employee";
+
+    }
 }
