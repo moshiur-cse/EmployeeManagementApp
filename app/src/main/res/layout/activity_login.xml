@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:hint="Enter Your Mail"
             android:gravity="center"
-            android:id="@+id/mailAdressET"/>
+            android:id="@+id/emailET"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="Enter Your Mail "
+            android:hint="Enter Your Password "
             android:id="@+id/passwordET"/>
     </com.google.android.material.textfield.TextInputLayout>
 

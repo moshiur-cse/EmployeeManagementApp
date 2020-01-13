@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_login);
-        mailAdressET=findViewById(R.id.mailAdressET);
+        mailAdressET=findViewById(R.id.emailET);
         passwordET=findViewById(R.id.passwordET);
 
         authPreference =new AuthPreference(this);
@@ -59,4 +59,5 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
 }
