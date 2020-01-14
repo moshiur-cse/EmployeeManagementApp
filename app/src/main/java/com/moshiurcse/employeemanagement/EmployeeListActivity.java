@@ -1,6 +1,7 @@
 package com.moshiurcse.employeemanagement;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.moshiurcse.employeemanagement.adapters.BaseSalarriedEmployeeAdapter;
 import com.moshiurcse.employeemanagement.models.BaseSalarriedEmployee;
 import com.moshiurcse.employeemanagement.utils.ConstantUtils;
 
@@ -21,6 +23,7 @@ public class EmployeeListActivity extends AppCompatActivity {
     private Spinner empTypeSP;
 
     private RecyclerView empRV;
+    private BaseSalarriedEmployeeAdapter employeeAdapter;
 
     private String[]empList={
             ConstantUtils.EmployeeType.BASE_SALARIED,
@@ -34,6 +37,10 @@ public class EmployeeListActivity extends AppCompatActivity {
         setTitle("Employee List");
         empTypeSP=findViewById(R.id.empTypeSP);
         empRV=findViewById(R.id.empRV);
+
+        employeeAdapter=new BaseSalarriedEmployeeAdapter(this,genereateEmployeeData());
+
+
 
         ArrayAdapter<String>adapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,empList);
 
@@ -51,28 +58,33 @@ public class EmployeeListActivity extends AppCompatActivity {
 
             }
 
-            private List<BaseSalarriedEmployee> genereateEmployeeData(){
-                List<BaseSalarriedEmployee> bslist=new ArrayList<>();
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-                bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
-
-                return bslist;
-            }
         });
 
+        LinearLayoutManager llm=new LinearLayoutManager(this);
+        empRV.setLayoutManager(llm);
+        empRV.setAdapter(employeeAdapter);
+
+
+    }
+    private List<BaseSalarriedEmployee> genereateEmployeeData(){
+        List<BaseSalarriedEmployee> bslist=new ArrayList<>();
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+        bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
+
+        return bslist;
     }
 }
