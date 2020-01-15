@@ -23,7 +23,6 @@ public class LoginActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-
         setContentView(R.layout.activity_login);
         mailAdressET=findViewById(R.id.emailET);
         passwordET=findViewById(R.id.passwordET);
