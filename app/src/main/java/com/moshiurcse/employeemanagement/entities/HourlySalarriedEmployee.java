@@ -1,5 +1,8 @@
-package com.moshiurcse.employeemanagement.models;
+package com.moshiurcse.employeemanagement.entities;
 
+import androidx.room.Entity;
+
+@Entity
 public class HourlySalarriedEmployee extends Employee {
     private double hourly_rate;
     private double total_hour;

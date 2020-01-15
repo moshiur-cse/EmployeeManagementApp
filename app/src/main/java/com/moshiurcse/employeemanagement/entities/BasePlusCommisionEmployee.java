@@ -1,4 +1,4 @@
-package com.moshiurcse.employeemanagement.models;
+package com.moshiurcse.employeemanagement.entities;
 
 public class BasePlusCommisionEmployee extends BaseSalarriedEmployee {
     //private double baseSalaryForBasePlusComEmployee;

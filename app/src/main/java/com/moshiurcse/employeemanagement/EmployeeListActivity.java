@@ -12,7 +12,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.moshiurcse.employeemanagement.adapters.BaseSalarriedEmployeeAdapter;
-import com.moshiurcse.employeemanagement.models.BaseSalarriedEmployee;
+import com.moshiurcse.employeemanagement.entities.BaseSalarriedEmployee;
+import com.moshiurcse.employeemanagement.roomdb.EmployeeDB;
 import com.moshiurcse.employeemanagement.utils.ConstantUtils;
 
 import java.util.ArrayList;
@@ -38,7 +39,16 @@ public class EmployeeListActivity extends AppCompatActivity {
         empTypeSP=findViewById(R.id.empTypeSP);
         empRV=findViewById(R.id.empRV);
 
-        employeeAdapter=new BaseSalarriedEmployeeAdapter(this,genereateEmployeeData());
+
+
+        //employeeAdapter=new BaseSalarriedEmployeeAdapter(this,genereateEmployeeData());
+
+;
+
+
+        employeeAdapter=new BaseSalarriedEmployeeAdapter(this,EmployeeDB.getInstance(this).
+                getBaseSalariedEmpDao().
+                gerAllBaseSalariedEmployee());
 
 
 

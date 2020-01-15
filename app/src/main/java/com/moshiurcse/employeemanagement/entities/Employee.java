@@ -1,6 +1,10 @@
-package com.moshiurcse.employeemanagement.models;
+package com.moshiurcse.employeemanagement.entities;
+
+import androidx.room.PrimaryKey;
 
 public abstract class  Employee {
+    @PrimaryKey(autoGenerate = true)
+    private long emp_id;
     private String emp_name;
     private String dob;
     private String emp_email;
@@ -65,6 +69,14 @@ public abstract class  Employee {
 
     public void setEmp_gender(String emp_gender) {
         this.emp_gender = emp_gender;
+    }
+
+    public long getEmp_id() {
+        return emp_id;
+    }
+
+    public void setEmp_id(long emp_id) {
+        this.emp_id = emp_id;
     }
 
     @Override

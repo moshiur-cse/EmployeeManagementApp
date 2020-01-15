@@ -5,36 +5,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.transition.Fade;
-import android.transition.Transition;
-import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Switch;
 import android.widget.Toast;
 
-import com.moshiurcse.employeemanagement.models.BasePlusCommisionEmployee;
-import com.moshiurcse.employeemanagement.models.BaseSalarriedEmployee;
-import com.moshiurcse.employeemanagement.models.Employee;
-import com.moshiurcse.employeemanagement.models.HourlySalarriedEmployee;
+import com.moshiurcse.employeemanagement.entities.BasePlusCommisionEmployee;
+import com.moshiurcse.employeemanagement.entities.BaseSalarriedEmployee;
+import com.moshiurcse.employeemanagement.entities.HourlySalarriedEmployee;
 import com.moshiurcse.employeemanagement.prefs.AuthPreference;
+import com.moshiurcse.employeemanagement.roomdb.EmployeeDB;
+import com.moshiurcse.employeemanagement.utils.ConstantUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -193,26 +185,26 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         String mobile=phoneET.getText().toString();
 
         switch (emp_type){
-            case "Base Salaried Employee":
-                String baseSalary=baseSalaryET.getText().toString();
-                BaseSalarriedEmployee bse =new BaseSalarriedEmployee(name,dob,mobile,email,gender,emp_type,Double.parseDouble(baseSalary));
+            case ConstantUtils.EmployeeType.BASE_SALARIED:
 
-                /*bse.setEmp_name(name);
-                bse.setDob(dob);
-                bse.setEmp_phone(mobile);
-                bse.setEmp_email(email);
-                bse.setEmp_gender(gender);
-                bse.setEmp_designation(emp_type);
-                bse.setBase_salary(Double.parseDouble(baseSalary));*/
+                String baseSalary=baseSalaryET.getText().toString();
+                BaseSalarriedEmployee bse =new BaseSalarriedEmployee(name,dob,email,mobile,emp_type,gender,Double.parseDouble(baseSalary));
+
+        final long empId= EmployeeDB.getInstance(this).
+                getBaseSalariedEmpDao().
+                insertBaseSalariedEmployee(bse);
+
+        if(empId>0){
+                Toast.makeText(this, "Saved" + empId, Toast.LENGTH_SHORT).show();
+            }
+
 
                 Log.e("Employee","RegisterNewEmployee"+bse);
                 Log.e("Employee","Total Salary="+bse.getTotalSalary());
                 Toast.makeText(this,"Total Salary="+bse.getTotalSalary(),Toast.LENGTH_LONG).show();
 
-
-
-
                 break;
+
             case "Hourly Salary Employee":
                 String totalHour=totalHourET.getText().toString();
                 String hourlyRate=hourlyRateET.getText().toString();
