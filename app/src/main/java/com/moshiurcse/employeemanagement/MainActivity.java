@@ -106,10 +106,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         typeRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-
                 RadioButton rb=findViewById(checkedId);
                 emp_type=rb.getText().toString();
-
                 activateDeactivateView(checkedId);
                 //short coure Toast + Tab
                 //Toast.makeText(MainActivity.this, rb.getText().toString(), Toast.LENGTH_SHORT).show();
@@ -190,19 +188,23 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 String baseSalary=baseSalaryET.getText().toString();
                 BaseSalarriedEmployee bse =new BaseSalarriedEmployee(name,dob,email,mobile,emp_type,gender,Double.parseDouble(baseSalary));
 
-        final long empId= EmployeeDB.getInstance(this).
-                getBaseSalariedEmpDao().
-                insertBaseSalariedEmployee(bse);
+        final long empId= EmployeeDB.getInstance(this).getBaseSalariedEmployeeDAO().insertBaseSalariedEmployee(bse);
 
         if(empId>0){
-                Toast.makeText(this, "Saved" + empId, Toast.LENGTH_SHORT).show();
-            }
+            Intent intent=new Intent(this,EmployeeListActivity.class);
+            startActivity(intent);
 
 
-                Log.e("Employee","RegisterNewEmployee"+bse);
+            }else{
+            Toast.makeText(this, "Faild", Toast.LENGTH_SHORT).show();
+
+        }
+
+
+               /* Log.e("Employee","RegisterNewEmployee"+bse);
                 Log.e("Employee","Total Salary="+bse.getTotalSalary());
                 Toast.makeText(this,"Total Salary="+bse.getTotalSalary(),Toast.LENGTH_LONG).show();
-
+*/
                 break;
 
             case "Hourly Salary Employee":
@@ -210,44 +212,38 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 String hourlyRate=hourlyRateET.getText().toString();
 
 
-                HourlySalarriedEmployee hse =new HourlySalarriedEmployee(name,dob,mobile,email,gender,emp_type,Double.parseDouble(hourlyRate),Double.parseDouble(totalHour));
+                HourlySalarriedEmployee hse =new HourlySalarriedEmployee(name,dob,email,mobile,emp_type,gender,Double.parseDouble(hourlyRate),Double.parseDouble(totalHour));
 
-               /* hse.setEmp_name(name);
-                hse.setDob(dob);
-                hse.setEmp_phone(mobile);
-                hse.setEmp_email(email);
-                hse.setEmp_gender(gender);
-                hse.setEmp_designation(emp_type);
-                hse.setHourly_rate(Double.parseDouble(hourlyRate));
-                hse.setTotal_hour(Double.parseDouble(totalHour));*/
+                final long empIdHourly= EmployeeDB.getInstance(this).getHourlySalarriedEmployeeDAO().insertHourlySalarriedEmployee(hse);
 
-                Log.e("Employee","RegisterNewEmployee"+hse);
-                Log.e("Employee","Total Salary="+hse.getTotalSalary());
-                Toast.makeText(this,"Total Salary="+hse.getTotalSalary(),Toast.LENGTH_LONG).show();
+                if(empIdHourly>0){
+                    Intent intent=new Intent(this,EmployeeListActivity.class);
+                    startActivity(intent);
+
+                }else{
+                    Toast.makeText(this, "Faild", Toast.LENGTH_SHORT).show();
+                }
 
                 break;
             case "Base and Commision Salary Employee":
+                //String baseSalary=baseSalaryET.getText().toString();
                 String baseSalary1=baseSalaryET.getText().toString();
                 String commisionRate=commitionRateET.getText().toString();
                 String grossSale=grossSaleET.getText().toString();
 
-                BasePlusCommisionEmployee bpse =new BasePlusCommisionEmployee(name,dob,mobile,email,gender,emp_type,Double.parseDouble(baseSalary1),Double.parseDouble(commisionRate),Double.parseDouble(grossSale));
+                BasePlusCommisionEmployee bpse =new BasePlusCommisionEmployee(name,dob,email,mobile,emp_type,gender,Double.parseDouble(baseSalary1),Double.parseDouble(commisionRate),Double.parseDouble(grossSale));
 
-                /*bpse.setEmp_name(name);
-                bpse.setEmp_phone(mobile);
-                bpse.setEmp_email(email);
-                bpse.setDob(dob);
-                bpse.setEmp_gender(gender);
-                bpse.setEmp_designation(emp_type);
+                final long empIdCommision= EmployeeDB.getInstance(this).getBasePlusCommisionEmployeeDAO().insertBasePlusCommisionEmployee(bpse);
 
-                bpse.setBaseSalary1(Double.parseDouble(baseSalary1));
-                bpse.setCommision_rate(Double.parseDouble(commisionRate));
-                bpse.setGross_total(Double.parseDouble(grossSale));*/
+                if(empIdCommision>0){
+                    Intent intent=new Intent(this,EmployeeListActivity.class);
+                    startActivity(intent);
 
-                Log.e("Employee","RegisterNewEmployee"+bpse);
-                Log.e("Employee","Total Salary="+bpse.getTotalSalary());
-                Toast.makeText(this,"Total Salary="+bpse.getTotalSalary(),Toast.LENGTH_LONG).show();
 
+                }else{
+                    Toast.makeText(this, "Faild", Toast.LENGTH_SHORT).show();
+
+                }
                 break;
 
         }

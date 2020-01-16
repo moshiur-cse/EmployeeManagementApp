@@ -23,7 +23,7 @@ public interface BaseSalariedEmployeeDAO {
     int deleteBaseSalariedEmployee(BaseSalarriedEmployee bas);
 
     @Query("Select * from tbl_emp_base_salaried")
-    List<BaseSalarriedEmployee> gerAllBaseSalariedEmployee();
+    List<BaseSalarriedEmployee> getAllBaseSalariedEmployee();
 
 
 }

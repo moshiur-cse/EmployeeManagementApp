@@ -1,5 +1,9 @@
 package com.moshiurcse.employeemanagement.entities;
 
+
+import androidx.room.Entity;
+
+@Entity(tableName = "tbl_base_plus_commision_employee")
 public class BasePlusCommisionEmployee extends BaseSalarriedEmployee {
     //private double baseSalaryForBasePlusComEmployee;
     private double commision_rate;
@@ -11,20 +15,6 @@ public class BasePlusCommisionEmployee extends BaseSalarriedEmployee {
         this.gross_total = gross_total;
     }
 
-/*public BasePlusCommisionEmployee(String emp_name, String dob, String emp_email, String emp_phone, String emp_designation, String emp_gender, double baseSalary1, double commision_rate, double gross_total) {
-        super(emp_name, dob, emp_email, emp_phone, emp_designation, emp_gender);
-        this.baseSalaryForBasePlusComEmployee = baseSalary1;
-        this.commision_rate = commision_rate;
-        this.gross_total = gross_total;
-    }
-*/
-/*    public double getBaseSalary1() {
-        return baseSalaryForBasePlusComEmployee;
-    }
-
-    public void setBaseSalary1(double baseSalaryForBasePlusComEmployee) {
-        this.baseSalaryForBasePlusComEmployee = baseSalaryForBasePlusComEmployee;
-    }*/
 
     public double getCommision_rate() {
         return commision_rate;

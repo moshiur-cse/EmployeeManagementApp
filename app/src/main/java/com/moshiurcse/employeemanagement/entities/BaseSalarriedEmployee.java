@@ -9,8 +9,8 @@ public class BaseSalarriedEmployee extends Employee {
     @ColumnInfo(name = "basic_salary")
     private double base_salary;
 
-    @Ignore
-    int image;
+   /* @Ignore
+    int image;*/
 
     public BaseSalarriedEmployee(String emp_name, String dob, String emp_email, String emp_phone, String emp_designation, String emp_gender, double base_salary) {
         super(emp_name, dob, emp_email, emp_phone, emp_designation, emp_gender);

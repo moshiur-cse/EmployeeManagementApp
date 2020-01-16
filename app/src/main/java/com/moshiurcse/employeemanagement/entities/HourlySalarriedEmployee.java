@@ -2,7 +2,7 @@ package com.moshiurcse.employeemanagement.entities;
 
 import androidx.room.Entity;
 
-@Entity
+@Entity(tableName = "tbl_hourly_salarried_employee")
 public class HourlySalarriedEmployee extends Employee {
     private double hourly_rate;
     private double total_hour;

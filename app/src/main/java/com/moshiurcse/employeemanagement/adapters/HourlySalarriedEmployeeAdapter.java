@@ -8,53 +8,43 @@ import android.view.ViewGroup;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import com.moshiurcse.employeemanagement.R;
-import com.moshiurcse.employeemanagement.entities.BaseSalarriedEmployee;
-import com.moshiurcse.employeemanagement.roomdb.EmployeeDB;
-
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.moshiurcse.employeemanagement.R;
+import com.moshiurcse.employeemanagement.entities.BaseSalarriedEmployee;
+import com.moshiurcse.employeemanagement.entities.HourlySalarriedEmployee;
 
-/*
-Step-1 : Layout Inflate
-Step-2 : View Initialize
-Step-3: Data Set
- */
+import java.util.List;
 
-public class BaseSalarriedEmployeeAdapter extends RecyclerView.Adapter<BaseSalarriedEmployeeAdapter.BaseSalarriedEmployeeViewHolder> {
+public class HourlySalarriedEmployeeAdapter extends RecyclerView.Adapter<HourlySalarriedEmployeeAdapter.HourlySalarriedEmployeeViewHolder> {
     private Context context;
-    //private List<BaseSalarriedEmployee> empList;
-    private List<BaseSalarriedEmployee> empList;
+    private List<HourlySalarriedEmployee> empList;
 
-
-    public BaseSalarriedEmployeeAdapter(Context context, List<BaseSalarriedEmployee> empList) {
+    public HourlySalarriedEmployeeAdapter(Context context, List<HourlySalarriedEmployee> empList) {
         this.context = context;
         this.empList = empList;
     }
 
     @NonNull
     @Override
-    public BaseSalarriedEmployeeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public HourlySalarriedEmployeeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        //Step-1
         LayoutInflater inflater=LayoutInflater.from(context);
         View itemView=inflater.inflate(R.layout.employee_row,parent,false);
-        return new BaseSalarriedEmployeeViewHolder(itemView);
+        return new HourlySalarriedEmployeeAdapter.HourlySalarriedEmployeeViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BaseSalarriedEmployeeViewHolder holder, final int position) {
-//Step-3
+    public void onBindViewHolder(@NonNull HourlySalarriedEmployeeViewHolder holder,final int position) {
+
         holder.nameTV.setText(empList.get(position).getEmp_name());
         holder.phoneTV.setText(empList.get(position).getEmp_phone());
 
         holder.menuTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BaseSalarriedEmployee bse=empList.get(position);
+                HourlySalarriedEmployee hse=empList.get(position);
                 //Toast.makeText(context, bse.getEmp_name(), Toast.LENGTH_SHORT).show();
 
                 PopupMenu popupMenu=new PopupMenu(context,view);
@@ -64,22 +54,9 @@ public class BaseSalarriedEmployeeAdapter extends RecyclerView.Adapter<BaseSalar
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
-                       switch (menuItem.getItemId()){
-                           case R.id.empDelete:
-
-                               //EmployeeDB.getInstance(this).getBaseSalariedEmployeeDAO().deleteBaseSalariedEmployee(bse.getEmp_id());
-                               break;
-
-                           case R.id.empDetails:
-
-                               //EmployeeDB.getInstance(this).getBaseSalariedEmployeeDAO().deleteBaseSalariedEmployee(int id);
-                               break;
-
-                           case R.id.empUpdate:
-
-                               //EmployeeDB.getInstance(this).getBaseSalariedEmployeeDAO().deleteBaseSalariedEmployee(int id);
-                               break;
-                       }
+                        switch (menuItem.getItemId()){
+                            //case R.id.row
+                        }
 
 
                         return false;
@@ -87,7 +64,6 @@ public class BaseSalarriedEmployeeAdapter extends RecyclerView.Adapter<BaseSalar
                 });
             }
         });
-
     }
 
     @Override
@@ -95,13 +71,16 @@ public class BaseSalarriedEmployeeAdapter extends RecyclerView.Adapter<BaseSalar
         return empList.size();
     }
 
-    public class BaseSalarriedEmployeeViewHolder extends RecyclerView.ViewHolder {
+
+    public class HourlySalarriedEmployeeViewHolder extends RecyclerView.ViewHolder {
 
         //Step-2
         TextView nameTV,phoneTV,menuTV;
 
 
-        public BaseSalarriedEmployeeViewHolder(@NonNull View itemView) {
+
+
+        public HourlySalarriedEmployeeViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTV=itemView.findViewById(R.id.row_empName);
             phoneTV=itemView.findViewById(R.id.row_empPhone);

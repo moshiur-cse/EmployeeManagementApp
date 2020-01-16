@@ -2,4 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <item android:title="Details"
     android:id="@+id/empDetails"/>
+    <item android:title="Edit"
+        android:id="@+id/empUpdate"/>
+
+    <item android:title="Delate"
+        android:id="@+id/empDelete"/>
+
 </menu>
