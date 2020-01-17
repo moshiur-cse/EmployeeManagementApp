@@ -1,13 +1,18 @@
 package com.moshiurcse.employeemanagement.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.moshiurcse.employeemanagement.AdminDashboardActivity;
+import com.moshiurcse.employeemanagement.EmployeeListActivity;
+import com.moshiurcse.employeemanagement.LoginActivity;
 import com.moshiurcse.employeemanagement.R;
 import com.moshiurcse.employeemanagement.entities.BaseSalarriedEmployee;
 import com.moshiurcse.employeemanagement.roomdb.EmployeeDB;
@@ -54,7 +59,7 @@ public class BaseSalarriedEmployeeAdapter extends RecyclerView.Adapter<BaseSalar
         holder.menuTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BaseSalarriedEmployee bse=empList.get(position);
+                final BaseSalarriedEmployee bse=empList.get(position);
                 //Toast.makeText(context, bse.getEmp_name(), Toast.LENGTH_SHORT).show();
 
                 PopupMenu popupMenu=new PopupMenu(context,view);
@@ -66,18 +71,21 @@ public class BaseSalarriedEmployeeAdapter extends RecyclerView.Adapter<BaseSalar
                     public boolean onMenuItemClick(MenuItem menuItem) {
                        switch (menuItem.getItemId()){
                            case R.id.empDelete:
+                               Toast.makeText(context, "empDelete", Toast.LENGTH_SHORT).show();
+                               EmployeeDB.getInstance(context).getBaseSalariedEmployeeDAO().deleteBaseSalariedEmployee(bse);
+                               goToEmployeeList();
+                               Toast.makeText(context, "Delete Successfully", Toast.LENGTH_SHORT).show();
 
-                               //EmployeeDB.getInstance(this).getBaseSalariedEmployeeDAO().deleteBaseSalariedEmployee(bse.getEmp_id());
                                break;
 
                            case R.id.empDetails:
+                               Toast.makeText(context, "Details", Toast.LENGTH_SHORT).show();
 
                                //EmployeeDB.getInstance(this).getBaseSalariedEmployeeDAO().deleteBaseSalariedEmployee(int id);
                                break;
 
                            case R.id.empUpdate:
-
-                               //EmployeeDB.getInstance(this).getBaseSalariedEmployeeDAO().deleteBaseSalariedEmployee(int id);
+                               //EmployeeDB.getInstance(context).getBaseSalariedEmployeeDAO().deleteBaseSalariedEmployee(int id);
                                break;
                        }
 
@@ -107,5 +115,10 @@ public class BaseSalarriedEmployeeAdapter extends RecyclerView.Adapter<BaseSalar
             phoneTV=itemView.findViewById(R.id.row_empPhone);
             menuTV=itemView.findViewById(R.id.row_menu);
         }
+    }
+
+    private void goToEmployeeList(){
+        Intent intent=new Intent(context, EmployeeListActivity.class);
+        context.startActivity(intent);
     }
 }
