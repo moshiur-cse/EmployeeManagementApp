@@ -68,7 +68,7 @@ public class BasePlusCommisionEmployeeAdapter extends RecyclerView.Adapter<BaseP
                                 Toast.makeText(context, "empDelete", Toast.LENGTH_SHORT).show();
                                 EmployeeDB.getInstance(context).getBasePlusCommisionEmployeeDAO().deleteBasePlusCommisionEmployee(cse);
 
-                                
+
                                 goToEmployeeList();
                                 Toast.makeText(context, "Delete Successfully", Toast.LENGTH_SHORT).show();
 
