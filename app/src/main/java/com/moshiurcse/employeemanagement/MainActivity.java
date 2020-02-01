@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -33,6 +34,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private EditText nameET,dobET,phoneET,emailET,baseSalaryET,totalHourET,hourlyRateET,commitionRateET,grossSaleET;
 
     private RadioGroup genderRG,typeRG;
+    private Button empRegister,empUpdate;
+
+    private long empId=0;
+    BaseSalarriedEmployee bse=null;
 
     private AuthPreference authPreference;
 
@@ -90,6 +95,30 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         genderRG=findViewById(R.id.genderTypeRadioGroup);
         typeRG=findViewById(R.id.empTypeTypeRadioGroup);
+
+        empRegister=findViewById(R.id.empRegister);
+        empUpdate=findViewById(R.id.empUpdate);
+
+        empId=getIntent().getLongExtra("empId",-1);
+
+        if(empId>0){
+
+            empRegister.setVisibility(View.GONE);
+            empUpdate.setVisibility(View.VISIBLE);
+
+            bse = EmployeeDB.getInstance(this).getBaseSalariedEmployeeDAO().getBaseSalarriedEmpById(empId);
+
+            nameET.setText(bse.getEmp_name());
+           // binding.detailsEmpDesignation.setText(bse.getEmp_designation());
+            dobET.setText(bse.getDob());
+            emailET.setText(bse.getEmp_email());
+
+            phoneET.setText(bse.getEmp_phone());
+           // binding.detailsEmpGender.setText(bse.getEmp_gender());
+            baseSalaryET.setText(String.valueOf(bse.getBase_salary()));
+
+
+            }
 
         genderRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             //Annonimus Class
@@ -298,6 +327,34 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         animate.setFillAfter(true);
         view.setVisibility(View.GONE);
         view.startAnimation(animate);
+
+    }
+
+    public void updateEmployee(View view) {
+        String name=nameET.getText().toString();
+        String email=emailET.getText().toString();
+        String mobile=phoneET.getText().toString();
+        String salary=baseSalaryET.getText().toString();
+        bse.setEmp_name(name);
+        bse.setEmp_email(email);
+        bse.setEmp_phone(mobile);
+        bse.setBase_salary(Double.parseDouble(salary));
+
+        final int rowUpdate=EmployeeDB.getInstance(this).getBaseSalariedEmployeeDAO().updateBaseSalariedEmployee(bse);
+
+        if(rowUpdate>0){
+            Intent intent=new Intent(this,EmployeeListActivity.class);
+            startActivity(intent);
+            Toast.makeText(this, "Update Successfully", Toast.LENGTH_SHORT).show();
+
+
+
+        }else{
+            Toast.makeText(this, "Faild", Toast.LENGTH_SHORT).show();
+
+        }
+
+
 
     }
 }

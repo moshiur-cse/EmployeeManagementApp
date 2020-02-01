@@ -19,7 +19,6 @@ import com.moshiurcse.employeemanagement.entities.HourlySalarriedEmployee;
 public abstract class EmployeeDB extends RoomDatabase {
 
     private static EmployeeDB db;
-
     public abstract BaseSalariedEmployeeDAO getBaseSalariedEmployeeDAO();
     public abstract HourlySalarriedEmployeeDAO getHourlySalarriedEmployeeDAO();
     public abstract BasePlusCommisionEmployeeDAO getBasePlusCommisionEmployeeDAO();
@@ -28,7 +27,9 @@ public abstract class EmployeeDB extends RoomDatabase {
         if(db!=null){
             return db;
         }
-        db= Room.databaseBuilder(context,EmployeeDB.class,"employee_db").allowMainThreadQueries().build();
+
+        //fallbackToDestructiveMigration()
+        db= Room.databaseBuilder(context,EmployeeDB.class,"employee_db").allowMainThreadQueries().fallbackToDestructiveMigration().build();
         return db;
     }
 }

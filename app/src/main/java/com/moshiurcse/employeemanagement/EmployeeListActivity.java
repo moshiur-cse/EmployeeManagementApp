@@ -95,7 +95,7 @@ public class EmployeeListActivity extends AppCompatActivity {
 
 
     }
-    /*private List<BaseSalarriedEmployee> genereateEmployeeData(){
+    private List<BaseSalarriedEmployee> genereateEmployeeData(){
         List<BaseSalarriedEmployee> bslist=new ArrayList<>();
         bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
         bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
@@ -115,5 +115,5 @@ public class EmployeeListActivity extends AppCompatActivity {
         bslist.add(new BaseSalarriedEmployee("Moshiur","12-03-1993", "moshiur@gmail.com","0171","manager","Gender", 1000));
 
         return bslist;
-    }*/
+    }
 }

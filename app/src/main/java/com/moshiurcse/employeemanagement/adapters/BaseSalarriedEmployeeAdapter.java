@@ -1,6 +1,8 @@
 package com.moshiurcse.employeemanagement.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -11,8 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.moshiurcse.employeemanagement.AdminDashboardActivity;
+import com.moshiurcse.employeemanagement.EmpDetailsActivity;
 import com.moshiurcse.employeemanagement.EmployeeListActivity;
 import com.moshiurcse.employeemanagement.LoginActivity;
+import com.moshiurcse.employeemanagement.MainActivity;
 import com.moshiurcse.employeemanagement.R;
 import com.moshiurcse.employeemanagement.entities.BaseSalarriedEmployee;
 import com.moshiurcse.employeemanagement.roomdb.EmployeeDB;
@@ -56,10 +60,13 @@ public class BaseSalarriedEmployeeAdapter extends RecyclerView.Adapter<BaseSalar
         holder.nameTV.setText(empList.get(position).getEmp_name());
         holder.phoneTV.setText(empList.get(position).getEmp_phone());
 
+
+
         holder.menuTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final BaseSalarriedEmployee bse=empList.get(position);
+                final long empId=bse.getEmp_id();
                 //Toast.makeText(context, bse.getEmp_name(), Toast.LENGTH_SHORT).show();
 
                 PopupMenu popupMenu=new PopupMenu(context,view);
@@ -71,20 +78,54 @@ public class BaseSalarriedEmployeeAdapter extends RecyclerView.Adapter<BaseSalar
                     public boolean onMenuItemClick(MenuItem menuItem) {
                        switch (menuItem.getItemId()){
                            case R.id.empDelete:
-                               Toast.makeText(context, "empDelete", Toast.LENGTH_SHORT).show();
+
+                               AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                               builder.setIcon(R.drawable.ic_delete_black_24dp);
+                               builder.setTitle("Do you want to delete!");
+                               builder.setMessage("Are you sure?");
+                               builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                   @Override
+                                   public void onClick(DialogInterface dialog, int which) {
+                                      final int count= EmployeeDB.getInstance(context).getBaseSalariedEmployeeDAO().deleteBaseSalariedEmployee(bse);
+
+
+                                       if (count>0){
+                                           empList.remove(bse);
+                                           notifyDataSetChanged();
+                                           Toast.makeText(context, "Delete Successfully", Toast.LENGTH_SHORT).show();
+                                           //goToEmployeeList();
+                                       }
+                                   }
+                               });
+                               builder.setNegativeButton("No",null);
+                               AlertDialog dialog=builder.create();
+                               dialog.show();
+
+
+
+
+
+                              /* Toast.makeText(context, "empDelete", Toast.LENGTH_SHORT).show();
                                EmployeeDB.getInstance(context).getBaseSalariedEmployeeDAO().deleteBaseSalariedEmployee(bse);
                                goToEmployeeList();
-                               Toast.makeText(context, "Delete Successfully", Toast.LENGTH_SHORT).show();
 
+*/
                                break;
 
                            case R.id.empDetails:
-                               Toast.makeText(context, "Details", Toast.LENGTH_SHORT).show();
+                               Intent intent=new Intent(context, EmpDetailsActivity.class);
+                               intent.putExtra("empId",empId);
+                               context.startActivity(intent);
+                               //Toast.makeText(context, "Details", Toast.LENGTH_SHORT).show();
 
                                //EmployeeDB.getInstance(this).getBaseSalariedEmployeeDAO().deleteBaseSalariedEmployee(int id);
                                break;
 
                            case R.id.empUpdate:
+
+                               Intent intent2=new Intent(context, MainActivity.class);
+                               intent2.putExtra("empId",empId);
+                               context.startActivity(intent2);
                                //EmployeeDB.getInstance(context).getBaseSalariedEmployeeDAO().deleteBaseSalariedEmployee(int id);
                                break;
                        }

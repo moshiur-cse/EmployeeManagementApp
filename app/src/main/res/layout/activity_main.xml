@@ -167,12 +167,23 @@
             android:animateLayoutChanges="true"
             android:visibility="gone"/>
         <Button
+            android:id="@+id/empRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
             android:text="Register"
             android:textAllCaps="false"
             android:onClick="registerNewEmployee"/>
+
+        <Button
+            android:id="@+id/empUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:text="Update"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            android:onClick="updateEmployee"/>
     </LinearLayout>
 
 </ScrollView>
