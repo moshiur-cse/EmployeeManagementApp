@@ -76,8 +76,28 @@ public class EmpDetailsActivity extends AppCompatActivity {
 
                 }
             });
+
+            binding.detailsEmpEmail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(Intent.ACTION_SEND);
+                    i.setType("message/rfc822");
+                    i.putExtra(Intent.EXTRA_EMAIL  , new String[]{bse.getEmp_email()});
+                    i.putExtra(Intent.EXTRA_SUBJECT, "Send Mail Details");
+                    i.putExtra(Intent.EXTRA_TEXT   , "Good To See You");
+                    try {
+                        startActivity(Intent.createChooser(i, "Send mail..."));
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        Toast.makeText(EmpDetailsActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            });
         }
     }
+
+
+
 
     private boolean isCallPermissionGranted(){
         String[]permissions={Manifest.permission.CALL_PHONE};
