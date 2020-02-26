@@ -1,122 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <TableRow
+
+    <TableLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginRight="5dp"
+        android:stretchColumns="*">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Employee Name :"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/details_emp_name"
-        android:text="name"/>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+           >
 
-</TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#030303"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                android:text="Name" />
 
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#030303"
+                android:textSize="14sp"
+                android:textStyle="italic"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Designation"/>
+                android:id="@+id/details_emp_name"
+                android:text="name" />
+        </TableRow>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/details_emp_designation"
-        android:text="name"/>
-    </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#030303"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                android:text="Designation" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/details_emp_designation"
+                android:textColor="#030303"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                android:text="name" />
+        </TableRow>
 
 
-<TableRow
-android:layout_width="fill_parent"
-android:layout_height="fill_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
-        android:text="Date of Birth"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#030303"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/details_emp_dob"
-        android:text="name"/>
-</TableRow>
+                android:text="Date of Birth" />
 
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/details_emp_dob"
+                android:textColor="#030303"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                android:text="name" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_email_black_24dp"
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
-            android:text="Email"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_email_black_24dp"
-        android:id="@+id/details_emp_email"
-        android:text="name"/>
-    </TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#030303"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                android:text="Email" />
 
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_email_black_24dp"
+                android:id="@+id/details_emp_email"
+                android:textColor="#030303"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                android:text="name" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
-            android:text="Phone"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#030303"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                android:text="Phone" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_call_black_24dp"
-        android:id="@+id/details_emp_phone"
-        android:text="name"/>
-    </TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_call_black_24dp"
+                android:id="@+id/details_emp_phone"
+                android:textColor="#030303"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                android:text="name" />
+        </TableRow>
 
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gender"
-            />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="name"
-        android:id="@+id/details_emp_gender"/>
-    </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Salary"
-           />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="name"
-        android:id="@+id/details_emp_baseSalary"/>
-    </TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#030303"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                android:text="Gender" />
 
-</TableLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#030303"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                android:text="name"
+                android:id="@+id/details_emp_gender" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#030303"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                android:text="Salary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name"
+                android:textColor="#030303"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                android:id="@+id/details_emp_baseSalary" />
+        </TableRow>
+
+    </TableLayout>
+</layout>
