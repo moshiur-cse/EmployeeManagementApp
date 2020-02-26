@@ -23,6 +23,7 @@ public class EmpDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Employee Details");
         //setContentView(R.layout.activity_emp_details);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_emp_details);
 
